@@ -4,7 +4,6 @@ namespace CMS\Controller\Redirect;
 use CMS\Controller\coreController;
 use CMS\Controller\users\usersController;
 use CMS\Model\Redirect\redirectModel;
-use CMS\Model\Redirect\statsRedirectModel;
 use CMS\Model\users\usersModel;
 
 

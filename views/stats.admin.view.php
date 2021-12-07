@@ -85,18 +85,19 @@ ob_start();
         type: 'doughnut',
         data: {
             //website name
-
             labels: [
                 <?php foreach ($stats as $items):?>
                     <?=json_encode($items['name']) . ","?>
                 <?php endforeach;?>
             ],
             datasets: [{
+                //Number of clicks
                 data: [
                     <?php foreach ($stats as $items):?>
                     <?=json_encode($items['click']) . ","?>
                     <?php endforeach;?>
                 ],
+                //Color (random)
                 backgroundColor: [
                     <?php for ($i = 0; $i < $number; $i++): ?>
                         <?= "random_rgb()," ?>
