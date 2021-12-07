@@ -2,42 +2,105 @@
 $title = REDIRECT_DASHBOARD_TITLE_STATS;
 $description = REDIRECT_DASHBOARD_DESC_STATS;
 
-$scripts = '<script rel="script" src="'.getenv("PATH_SUBFOLDER").'app/package/redirect/views/ressources/js/main.js"></script>';
-
 ob_start();
+/* @var redirectModel[] $stats */
 /* @var redirectModel[] $redirect */
-?>
+/* @var redirectModel[] $number */?>
 
-<!-- Chart.js (stats charts) -->
+<!-- Chart.js (lib) -->
 <script src="<?=getenv("PATH_SUBFOLDER")?>admin/resources/vendors/chart.js/Chart.min.js"></script>
 
-<canvas id="chartGlobal"></canvas>
+<!-- Main.js -->
+<script rel="script" src="<?=getenv("PATH_SUBFOLDER")?>app/package/redirect/views/ressources/js/main.js"></script>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Number of redirect -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3><?= number_format($number) ?></h3>
+
+                    <p><?=REDIRECT_DASHBOARD_STATS_NUMBER?></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-chart-area"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Number of clicks (total) -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3><?= number_format($redirect->totalClicks) ?></h3>
+
+                    <p><?=REDIRECT_DASHBOARD_STATS_CLICKS_TOTAUX?></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="row">
+        <!-- STATS CLICKS PER REDIRECT-->
+        <div class="col-6">
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title"><?= REDIRECT_DASHBOARD_STATS_TITLE_CLICK ?></h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <canvas id="chartGlobal"></canvas>
+                </div>
+
+            </div>
+        </div>
+
+        <!--//todo why not create a chart with date and clicks per redirect -->
+
+    </div>
+</div>
+
 
 
 <script>
-    //CONFIG
-    function random_rgb() {
-        var o = Math.round, r = Math.random, s = 255;
-        return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
-    }
-
-//todo juste show n° click / redirect
-
+    //Chart config
     var ctx = document.getElementById('chartGlobal').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'pie',
+        type: 'doughnut',
         data: {
-            labels: ['1', '2', '3', '4', '5'],
+            //website name
+
+            labels: [
+                <?php foreach ($stats as $items):?>
+                    <?=json_encode($items['name']) . ","?>
+                <?php endforeach;?>
+            ],
             datasets: [{
-                label: 'Affichage des statistiques de redirection',
-                data: [12, 19, 3, 5, 2],
+                data: [
+                    <?php foreach ($stats as $items):?>
+                    <?=json_encode($items['click']) . ","?>
+                    <?php endforeach;?>
+                ],
                 backgroundColor: [
-                    random_rgb(),
-                    random_rgb(),
-                    random_rgb(),
-                    random_rgb(),
-                    random_rgb(),
-                    random_rgb()
+                    <?php for ($i = 0; $i < $number; $i++): ?>
+                        <?= "random_rgb()," ?>
+                    <?php endfor; ?>
                 ],
                 borderWidth: 1
             }]

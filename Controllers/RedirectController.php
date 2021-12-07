@@ -4,6 +4,7 @@ namespace CMS\Controller\Redirect;
 use CMS\Controller\coreController;
 use CMS\Controller\users\usersController;
 use CMS\Model\Redirect\redirectModel;
+use CMS\Model\Redirect\statsRedirectModel;
 use CMS\Model\users\usersModel;
 
 
@@ -102,9 +103,13 @@ class redirectController extends coreController
     public function stats(){
         $redirect = new redirectModel();
 
-        $redirectList = $redirect->fetchAll();
+        $stats = $redirect->getStats();
 
-        view('redirect', 'stats.admin', ["redirect" => $redirect, "redirectList" => $redirectList], 'admin');
+        $number = $redirect->getNumberOfLines();
+
+        $redirect->getTotalClicks();
+
+        view('redirect', 'stats.admin', ["redirect" => $redirect, "stats" => $stats, "number" => $number], 'admin');
     }
 
     /* //////////////////// PUBLIC //////////////////// */

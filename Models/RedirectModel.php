@@ -22,6 +22,7 @@ class redirectModel extends manager{
     public string $target;
     public int $click;
     public int $isDefine;
+    public int $totalClicks;
 
     /* Please don't change this list ( this is for compatibilities with the others CMS packages !! ) */
     public function urlList(): array{
@@ -180,5 +181,47 @@ class redirectModel extends manager{
     }
 
 
+    public function getStats(): array{
+        $sql = "SELECT `name`,`click` FROM cms_redirect";
+        $db = manager::dbConnect();
+        $req = $db->prepare($sql);
+        $res = $req->execute();
+
+        if($res) {
+            return $req->fetchAll();
+        }
+
+        return [];
+    }
+
+    public function getNumberOfLines(){
+        $sql = "SELECT id FROM cms_redirect";
+        $db = manager::dbConnect();
+        $req = $db->prepare($sql);
+        $res = $req->execute();
+
+        if($res) {
+            $lines = $req->fetchAll();
+
+            return count($lines);
+        }
+
+        return [];
+    }
+
+    public function getTotalClicks(){
+        $sql = "SELECT SUM(click) FROM cms_redirect";
+        $db = manager::dbConnect();
+        $req = $db->prepare($sql);
+        $res = $req->execute();
+
+        if($req->execute()) {
+            $result = $req->fetch();
+
+            $this->totalClicks = $result['SUM(click)'];
+
+        }
+
+    }
 
 }

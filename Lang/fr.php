@@ -25,6 +25,11 @@ const REDIRECT_DASHBOARD_SLUG_HINT = "Le slug est l'url que l'utilisateur verra 
 const REDIRECT_DASHBOARD_TARGET = "Cible";
 const REDIRECT_DASHBOARD_TARGET_PLACEHOLDER = "Entrez l'url cible ( ex: https://discord.gg/dDTm25YAFB )";
 
+const REDIRECT_DASHBOARD_STATS_TITLE_CLICK = "Nombres de cliques par redirection";
+
+const REDIRECT_DASHBOARD_STATS_NUMBER = "Nombre de redirection";
+const REDIRECT_DASHBOARD_STATS_CLICKS_TOTAUX = "Nombre de cliques totaux";
+
 
 
 
