@@ -34,7 +34,7 @@ ob_start();
                             <label class="mt-4" for="slug"><?=REDIRECT_DASHBOARD_SLUG?></label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><?= "https://" . $_SERVER['SERVER_NAME'] . getenv("PATH_SUBFOLDER") . "r/"?><span id="slug">redirect</span>/</span>
+                                    <span class="input-group-text"><?= "https://" . $_SERVER['SERVER_NAME'] . getenv("PATH_SUBFOLDER") . "r/"?></span>
                                 </div>
                                 <input type="text" name="slug" class="form-control" placeholder="<?=REDIRECT_DASHBOARD_SLUG_PLACEHOLDER?>" required>
                             </div>

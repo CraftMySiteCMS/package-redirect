@@ -12,7 +12,7 @@ CREATE TABLE `cms_redirect`
 CREATE TABLE `cms_redirect_logs`
 (
     `id`          int(11)   NOT NULL,
-    `redirect_id` int(11)   NOT NULL,
+    `redirect_id` int(11)            DEFAULT NULL,
     `date`        timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
@@ -33,5 +33,5 @@ ALTER TABLE `cms_redirect_logs`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `cms_redirect_logs`
-    ADD CONSTRAINT `cms_redirect_logs_fk` FOREIGN KEY (`redirect_id`) REFERENCES `cms_redirect` (`id`);
+    ADD CONSTRAINT `cms_redirect_logs_fk` FOREIGN KEY (`redirect_id`) REFERENCES `cms_redirect` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
