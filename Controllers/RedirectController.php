@@ -99,17 +99,37 @@ class redirectController extends coreController
         $redirect = new redirectModel();
 
         $redirect->id = $id;
-        $redirect->name = filter_input(INPUT_POST, "name");
-        $redirect->slug = filter_input(INPUT_POST, "slug");
-        $redirect->target = filter_input(INPUT_POST, "target");
 
-        $redirect->update();
+        if ($redirect->checkNameEdit(filter_input(INPUT_POST, "name"), $id) > 0){
+            $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_ERROR;
+            $_SESSION['toaster'][0]['type'] = "bg-danger";
+            $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_CREATE_ERROR_NAME;
 
-        $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_SUCCESS;
-        $_SESSION['toaster'][0]['type'] = "bg-success";
-        $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_EDIT_SUCCESS;
+            header("location: ../edit/".$redirect->id);
 
-        header("location: ../list");
+        } elseif ($redirect->checkSlugEdit(filter_input(INPUT_POST, "slug"), $id) > 0){
+
+            $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_ERROR;
+            $_SESSION['toaster'][0]['type'] = "bg-danger";
+            $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_CREATE_ERROR_SLUG;
+
+            header("location: ../edit/".$redirect->id);
+        } else{
+
+            $redirect->name = filter_input(INPUT_POST, "name");
+            $redirect->slug = filter_input(INPUT_POST, "slug");
+            $redirect->target = filter_input(INPUT_POST, "target");
+
+            $redirect->update();
+
+            $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_SUCCESS;
+            $_SESSION['toaster'][0]['type'] = "bg-success";
+            $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_EDIT_SUCCESS;
+
+            header("location: ../list");
+        }
+
+
 
     }
 
