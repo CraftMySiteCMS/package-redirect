@@ -18,27 +18,20 @@ class redirectModel extends manager{
     public ?int $id;
     public string $name;
     public string $slug;
-    public string $url;
     public string $target;
     public int $click;
     public int $isDefine;
     public int $totalClicks;
 
-    /* Please don't change this list ( this is for compatibilities with the others CMS packages !! ) */
-    public function urlList(): array{
-
-        return array(0 => "redirect",1 => "link",2 => "turn",3 => "direct",4 => "url");
-    }
 
     public function create(): void{
         $var = array(
             "name" => $this->name,
-            "url" => $this->url,
             "slug" => $this->slug,
             "target" => $this->target
         );
 
-        $sql = "INSERT INTO cms_redirect (name, url, slug, target) VALUES (:name, :url, :slug, :target)";
+        $sql = "INSERT INTO cms_redirect (name, slug, target) VALUES (:name, :slug, :target)";
 
         $db = manager::dbConnect();
         $req = $db->prepare($sql);
@@ -122,11 +115,10 @@ class redirectModel extends manager{
             "id" => $this->id,
             "name" => $this->name,
             "slug" => $this->slug,
-            "url" => $this->url,
             "target" => $this->target
         );
 
-        $sql = "UPDATE cms_redirect SET name=:name, slug=:slug, url=:url, target=:target WHERE id=:id";
+        $sql = "UPDATE cms_redirect SET name=:name, slug=:slug, target=:target WHERE id=:id";
 
         $db = manager::dbConnect();
         $req = $db->prepare($sql);

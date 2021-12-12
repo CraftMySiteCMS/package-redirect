@@ -39,9 +39,8 @@ class redirectController extends coreController
 
         $redirect = new redirectModel();
 
-        $urlList = $redirect->urlList();
 
-        view('redirect', 'add.admin', ["urlList" => $urlList], 'admin');
+        view('redirect', 'add.admin', [], 'admin');
     }
 
     public function createPost(){
@@ -50,7 +49,6 @@ class redirectController extends coreController
         $redirect = new redirectModel();
 
         $redirect->name = filter_input(INPUT_POST, "name");
-        $redirect->url = filter_input(INPUT_POST, "url");
         $redirect->slug = filter_input(INPUT_POST, "slug");
         $redirect->target = filter_input(INPUT_POST, "target");
 
@@ -65,9 +63,8 @@ class redirectController extends coreController
         $redirect = new redirectModel();
         $redirect->fetch($id);
 
-        $urlList = $redirect->urlList();
 
-        view('redirect', 'edit.admin', ["redirect" => $redirect, "urlList" => $urlList], 'admin');
+        view('redirect', 'edit.admin', ["redirect" => $redirect], 'admin');
     }
 
     public function editPost($id){
@@ -78,7 +75,6 @@ class redirectController extends coreController
 
         $redirect->id = $id;
         $redirect->name = filter_input(INPUT_POST, "name");
-        $redirect->url = filter_input(INPUT_POST, "url");
         $redirect->slug = filter_input(INPUT_POST, "slug");
         $redirect->target = filter_input(INPUT_POST, "target");
 
@@ -114,7 +110,7 @@ class redirectController extends coreController
     /* //////////////////// PUBLIC //////////////////// */
 
     //Redirect
-    public function redirect($url, $slug){
+    public function redirect($slug){
 
         $core = new coreController();
 

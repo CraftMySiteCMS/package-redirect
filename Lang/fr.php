@@ -19,7 +19,7 @@ const REDIRECT_DASHBOARD_URL_PLACEHOLDER = "Choisissez l'url que vous souhaitez"
 const REDIRECT_DASHBOARD_URL_HINT = "L'url vous permet de personnaliser un peux plus votre redirection";
 
 const REDIRECT_DASHBOARD_SLUG = "Slug";
-const REDIRECT_DASHBOARD_SLUG_PLACEHOLDER = "Entrez l'url cible ( ex: https://discord.gg/dDTm25YAFB )";
+const REDIRECT_DASHBOARD_SLUG_PLACEHOLDER = "Entrez le slug ( ex: discord )";
 const REDIRECT_DASHBOARD_SLUG_HINT = "Le slug est l'url que l'utilisateur verra pour là redirection";
 
 const REDIRECT_DASHBOARD_TARGET = "Cible";
@@ -27,7 +27,7 @@ const REDIRECT_DASHBOARD_TARGET_PLACEHOLDER = "Entrez l'url cible ( ex: https://
 
 const REDIRECT_DASHBOARD_STATS_TITLE_CLICK = "Nombres de cliques par redirection";
 
-const REDIRECT_DASHBOARD_STATS_NUMBER = "Nombre de redirection";
+const REDIRECT_DASHBOARD_STATS_NUMBER = "Nombre de redirections";
 const REDIRECT_DASHBOARD_STATS_CLICKS_TOTAUX = "Nombre de cliques totaux";
 
 

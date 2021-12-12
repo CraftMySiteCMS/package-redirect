@@ -32,26 +32,12 @@ ob_start();
 
                             </div>
 
-                            <label for="url"><?=REDIRECT_DASHBOARD_URL?></label>
-                            <div class="input-group mb-3">
-
-                                <select class="form-control" id="url" name="url" onchange="getSelectValue()" required>
-
-                                    <?php /** @var redirectModel[] $urlList */
-
-                                    foreach ($urlList as $key => $url): ?>
-                                        <option value="<?= $urlList[$key] ?>" <?= ($redirect->url == $urlList[$key] ? "selected" : "") ?>><?= $urlList[$key] ?></option>
-                                    <?php endforeach; ?>
-
-                                </select>
-
-                            </div>
                             <small class="form-text"><?= REDIRECT_DASHBOARD_URL_HINT ?></small>
 
                             <label class="mt-4" for="slug"><?=REDIRECT_DASHBOARD_SLUG?></label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><?= "https://" . $_SERVER['SERVER_NAME'] . getenv("PATH_SUBFOLDER") . "r/"?><span id="slug"><?= $redirect->url ?></span>/</span>
+                                    <span class="input-group-text"><?= "https://" . $_SERVER['SERVER_NAME'] . getenv("PATH_SUBFOLDER") . "r/"?></span>
                                 </div>
                                 <input type="text" value="<?= $redirect->slug ?>" name="slug" class="form-control" placeholder="<?=REDIRECT_DASHBOARD_SLUG_PLACEHOLDER?>" required>
                             </div>

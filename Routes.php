@@ -42,8 +42,8 @@ $router->scope('/cms-admin/redirect/list', function($router) {
 //Public redirect
     $router->scope('/r', function ($router){
 
-        $router->get('/:url/:slug', function($url,$slug) {
-            (new redirectController)->redirect($url,$slug);
+        $router->get('/:slug', function($slug) {
+            (new redirectController)->redirect($slug);
         })->with('slug', '.*?');
 
     });

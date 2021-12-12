@@ -2,7 +2,6 @@ CREATE TABLE `cms_redirect`
 (
     `id`        int(11)         NOT NULL,
     `name`      varchar(255)    NOT NULL,
-    `url`       varchar(255)    NOT NULL,
     `slug`      varchar(255)    NOT NULL,
     `target`    varchar(255)    NOT NULL,
     `click`     int(11)         NOT NULL DEFAULT '0',

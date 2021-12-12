@@ -66,7 +66,6 @@ $description = REDIRECT_DASHBOARD_DESC;
                                 <tr>
                                     <th><?= REDIRECT_LIST_TABLE_ID ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_NAME ?></th>
-                                    <th><?= REDIRECT_LIST_TABLE_URL ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_SLUG ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_TARGET ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_CLICK ?></th>
@@ -80,7 +79,6 @@ $description = REDIRECT_DASHBOARD_DESC;
                                     <tr>
                                         <td><?= $redirect['id'] ?></td>
                                         <td><?= $redirect['name'] ?></td>
-                                        <td><?= $redirect['url'] ?></td>
                                         <td><?= $redirect['slug'] ?></td>
                                         <td><?= $redirect['target'] ?></td>
                                         <td><?= $redirect['click'] ?></td>
@@ -102,7 +100,6 @@ $description = REDIRECT_DASHBOARD_DESC;
                                 <tr>
                                     <th><?= REDIRECT_LIST_TABLE_ID ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_NAME ?></th>
-                                    <th><?= REDIRECT_LIST_TABLE_URL ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_SLUG ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_TARGET ?></th>
                                     <th><?= REDIRECT_LIST_TABLE_CLICK ?></th>
