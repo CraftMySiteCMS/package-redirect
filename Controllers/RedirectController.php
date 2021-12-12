@@ -48,13 +48,38 @@ class redirectController extends coreController
 
         $redirect = new redirectModel();
 
-        $redirect->name = filter_input(INPUT_POST, "name");
-        $redirect->slug = filter_input(INPUT_POST, "slug");
-        $redirect->target = filter_input(INPUT_POST, "target");
 
-        $redirect->create();
+        if ($redirect->checkName(filter_input(INPUT_POST, "name")) > 0){
 
-        header("location: ../redirect/list");
+            $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_ERROR;
+            $_SESSION['toaster'][0]['type'] = "bg-danger";
+            $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_CREATE_ERROR_NAME;
+
+            header("location: ../redirect/add");
+
+        } elseif ($redirect->checkSlug(filter_input(INPUT_POST, "slug")) > 0){
+
+            $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_ERROR;
+            $_SESSION['toaster'][0]['type'] = "bg-danger";
+            $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_CREATE_ERROR_SLUG;
+
+            header("location: ../redirect/add");
+        }
+        else {
+
+            $redirect->name = filter_input(INPUT_POST, "name");
+            $redirect->slug = filter_input(INPUT_POST, "slug");
+            $redirect->target = filter_input(INPUT_POST, "target");
+
+            $redirect->create();
+
+            $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_SUCCESS;
+            $_SESSION['toaster'][0]['type'] = "bg-success";
+            $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_CREATE_SUCCESS;
+
+            header("location: ../redirect/list");
+        }
+
     }
 
     public function edit($id){
@@ -80,6 +105,10 @@ class redirectController extends coreController
 
         $redirect->update();
 
+        $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_SUCCESS;
+        $_SESSION['toaster'][0]['type'] = "bg-success";
+        $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_EDIT_SUCCESS;
+
         header("location: ../list");
 
     }
@@ -91,6 +120,10 @@ class redirectController extends coreController
         $redirect->id = $id;
 
         $redirect->delete();
+
+        $_SESSION['toaster'][0]['title'] = REDIRECT_TOAST_TITLE_SUCCESS;
+        $_SESSION['toaster'][0]['type'] = "bg-success";
+        $_SESSION['toaster'][0]['body'] = REDIRECT_TOAST_DELETE_SUCCESS;
 
         header("location: ../list");
     }

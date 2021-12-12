@@ -56,3 +56,14 @@ const REDIRECT_LIST_TABLE_URL = "URL";
 const REDIRECT_LIST_TABLE_TARGET = "Cible";
 const REDIRECT_LIST_TABLE_CLICK = "Cliques";
 const REDIRECT_LIST_TABLE_EDIT = "Modifications";
+
+const REDIRECT_TOAST_TITLE_SUCCESS = "Information";
+const REDIRECT_TOAST_TITLE_ERROR = "Erreur";
+const REDIRECT_TOAST_TITLE_WARNING = "Attention";
+
+const REDIRECT_TOAST_CREATE_SUCCESS = "Redirection ajoutée";
+const REDIRECT_TOAST_CREATE_ERROR_NAME = "Nom déjà utilisé";
+const REDIRECT_TOAST_CREATE_ERROR_SLUG = "Slug déjà utilisé";
+
+const REDIRECT_TOAST_EDIT_SUCCESS = "Modification effectuée";
+const REDIRECT_TOAST_DELETE_SUCCESS = "Suppression effectuée";

@@ -231,4 +231,42 @@ class redirectModel extends manager{
         return [];
     }
 
+    public function checkName($name){
+        $var = array(
+            "name" => $name
+        );
+
+        $sql = "SELECT name FROM cms_redirect WHERE name=:name";
+
+        $db = manager::dbConnect();
+        $req = $db->prepare($sql);
+
+        if ($req->execute($var)){
+            $lines =  $req->fetchAll();
+
+            return count($lines);
+        }
+
+        return [];
+    }
+
+    public function checkSlug($slug){
+        $var = array(
+            "slug" => $slug
+        );
+
+        $sql = "SELECT slug FROM cms_redirect WHERE slug=:slug";
+
+        $db = manager::dbConnect();
+        $req = $db->prepare($sql);
+
+        if ($req->execute($var)){
+            $lines =  $req->fetchAll();
+
+            return count($lines);
+        }
+
+        return [];
+    }
+
 }
