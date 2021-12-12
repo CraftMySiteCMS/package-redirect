@@ -30,16 +30,30 @@ ob_start();
             </div>
         </div>
 
-        <!-- Number of clicks (total) -->
+        <!-- Number of clicks (redirect actives) -->
         <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3><?= number_format($redirect->totalClicks) ?></h3>
 
-                    <p><?=REDIRECT_DASHBOARD_STATS_CLICKS_TOTAUX?></p>
+                    <p><?=REDIRECT_DASHBOARD_STATS_CLICKS_ACTIVES?></p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-chart-pie"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Number of clicks (total) -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3><?= number_format($redirect->getAllClicks()) ?></h3>
+
+                    <p><?=REDIRECT_DASHBOARD_STATS_CLICKS_TOTAUX?></p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-chart-line"></i>
                 </div>
             </div>
         </div>

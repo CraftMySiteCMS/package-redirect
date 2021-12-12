@@ -104,6 +104,8 @@ class redirectController extends coreController
 
         $redirect->getTotalClicks();
 
+        $redirect->getAllClicks();
+
         view('redirect', 'stats.admin', ["redirect" => $redirect, "stats" => $stats, "number" => $number], 'admin');
     }
 

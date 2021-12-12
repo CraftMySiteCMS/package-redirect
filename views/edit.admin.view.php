@@ -32,8 +32,6 @@ ob_start();
 
                             </div>
 
-                            <small class="form-text"><?= REDIRECT_DASHBOARD_URL_HINT ?></small>
-
                             <label class="mt-4" for="slug"><?=REDIRECT_DASHBOARD_SLUG?></label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

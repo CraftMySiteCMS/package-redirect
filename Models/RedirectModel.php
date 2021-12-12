@@ -216,4 +216,19 @@ class redirectModel extends manager{
 
     }
 
+    public function getAllClicks(){
+        $sql = "SELECT id FROM cms_redirect_logs";
+        $db = manager::dbConnect();
+        $req = $db->prepare($sql);
+        $res = $req->execute();
+
+        if($res) {
+            $lines = $req->fetchAll();
+
+            return count($lines);
+        }
+
+        return [];
+    }
+
 }
