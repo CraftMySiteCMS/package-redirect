@@ -93,7 +93,12 @@ class redirectModel extends manager{
         $req = $db->prepare($sql);
 
         if($req->execute($var)) {
+            
             $result = $req->fetch();
+            if (empty($result)){
+                header("location: " . getenv("PATH_SUBFOLDER"));
+            }
+            
             foreach ($result as $key => $property) {
 
                 //to camel case all keys
